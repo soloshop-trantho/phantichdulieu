@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoloShop – Khóa Học Thực Chiến</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1058466916516302');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    content_name: 'SoloShop Khóa Học Thực Chiến',
+    content_category: 'Course',
+    currency: 'VND',
+    value: 2990000
+  });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1058466916516302&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+  <style>
+    :root {
+      --bg:       #0A0F1E;
+      --surf:     #111827;
+      --surf2:    #1A2235;
+      --surf3:    #1F2937;
+      --border:   #2D3748;
+      --text:     #E5E7EB;
+      --muted:    #9CA3AF;
+      --dim:      #6B7280;
+      --orange:   #FF6B00;
+      --orange-l: #FF8C38;
+      --gold:     #FFD200;
+      --green:    #10B981;
+      --blue:     #3B82F6;
+      --font:     'Be Vietnam Pro', system-ui, sans-serif;
+      --r:        12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+    /* HEADER */
+    .hdr {
+      background: var(--surf);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200;
+    }
+    .hdr-brand { font-size: 22px; font-weight: 900; background: linear-gradient(120deg, #FF6B00, #FFD200); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hdr-sub { font-size: 13px; color: var(--muted); margin-left: 10px; font-weight: 500; }
+    .hdr-left { display: flex; align-items: center; }
+    .hdr-right { display: flex; align-items: center; gap: 14px; }
+    .member-badge { background: linear-gradient(135deg,rgba(255,107,0,.15),rgba(255,210,0,.1)); border: 1px solid rgba(255,107,0,.35); border-radius: 20px; padding: 6px 16px; font-size: 12px; font-weight: 700; color: var(--orange-l); letter-spacing: .04em; }
+    .progress-wrap { display: flex; align-items: center; gap: 9px; font-size: 12px; color: var(--muted); }
+    .progress-bar-outer { width: 130px; height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
+    .progress-bar-inner { height: 100%; background: linear-gradient(90deg, var(--orange), var(--gold)); border-radius: 10px; transition: width .5s ease; }
+    .menu-btn { display: none; align-items: center; justify-content: center; width: 38px; height: 38px; background: var(--surf3); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 18px; color: var(--text); }
+
+    /* LAYOUT */
+    .layout { display: grid; grid-template-columns: 290px 1fr; min-height: calc(100vh - 62px); }
+
+    /* SIDEBAR */
+    .sidebar { background: var(--surf); border-right: 1px solid var(--border); overflow-y: auto; position: sticky; top: 62px; height: calc(100vh - 62px); }
+    .sidebar-hdr { padding: 18px 20px; border-bottom: 1px solid var(--border); }
+    .sidebar-hdr-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin-bottom: 6px; }
+    .sidebar-hdr-count { font-size: 13px; color: var(--muted); }
+
+    .module-wrap { border-bottom: 1px solid var(--border); }
+    .module-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: 14px 20px;
+      background: none; border: none; color: var(--text);
+      font-family: var(--font); font-size: 13px; font-weight: 700;
+      cursor: pointer; text-align: left; transition: background .15s;
+    }
+    .module-btn:hover { background: var(--surf2); }
+    .module-btn-left { display: flex; align-items: center; gap: 10px; }
+    .module-tag { width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+    .tag-intro  { background: rgba(59,130,246,.2); color: #60A5FA; }
+    .tag-b1     { background: rgba(255,107,0,.2); color: var(--orange-l); }
+    .tag-b2     { background: rgba(16,185,129,.2); color: var(--green); }
+    .tag-locked { background: var(--surf3); color: var(--dim); opacity: .5; }
+    .module-arrow { font-size: 11px; color: var(--dim); transition: transform .2s; }
+    .module-arrow.open { transform: rotate(90deg); }
+    .lessons-list { display: none; }
+    .lessons-list.open { display: block; }
+
+    .lesson-btn {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; padding: 10px 20px 10px 34px;
+      background: none; border: none; border-left: 3px solid transparent;
+      font-family: var(--font); font-size: 13px; color: var(--muted);
+      cursor: pointer; text-align: left; transition: background .12s, color .12s, border-color .12s;
+    }
+    .lesson-btn:hover { background: var(--surf2); color: var(--text); }
+    .lesson-btn.active { background: rgba(255,107,0,.08); color: var(--orange-l); border-left-color: var(--orange); }
+    .lesson-btn.done { color: var(--green); }
+    .l-icon { font-size: 14px; flex-shrink: 0; }
+    .l-dur { margin-left: auto; font-size: 11px; color: var(--dim); white-space: nowrap; }
+    .l-name { flex: 1; line-height: 1.4; }
+
+    /* MAIN */
+    .main { padding: 32px 40px 80px; max-width: 920px; }
+
+    .breadcrumb { font-size: 12px; color: var(--dim); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb .sep { color: var(--border); }
+    .breadcrumb .cur { color: var(--muted); }
+
+    .lesson-tag-chip { display: inline-block; background: rgba(255,107,0,.15); color: var(--orange-l); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .lesson-title { font-size: 28px; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+    .lesson-meta { display: flex; align-items: center; gap: 18px; font-size: 13px; color: var(--muted); margin-bottom: 24px; flex-wrap: wrap; }
+    .done-badge { color: var(--green) !important; font-weight: 600; }
+
+    /* VIDEO */
+    .video-wrap { background: #000; border-radius: var(--r); aspect-ratio: 16/9; overflow: hidden; margin-bottom: 28px; border: 1px solid var(--border); }
+    .video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* CONTENT BODY */
+    .content-card { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); padding: 28px; margin-bottom: 20px; }
+    .content-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .content-card p { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 12px; }
+    .content-card p:last-child { margin-bottom: 0; }
+    .content-card ul { list-style: none; }
+    .content-card li { font-size: 14px; line-height: 1.75; color: var(--muted); padding: 7px 0 7px 22px; position: relative; border-bottom: 1px solid rgba(45,55,72,.6); }
+    .content-card li:last-child { border-bottom: none; }
+    .content-card li::before { content: '›'; position: absolute; left: 4px; color: var(--orange); font-size: 16px; font-weight: 700; }
+    .content-card li strong { color: var(--text); }
+
+    .hl { background: rgba(255,107,0,.07); border: 1px solid rgba(255,107,0,.2); border-left: 4px solid var(--orange); border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 14px; color: var(--text); font-weight: 500; line-height: 1.65; }
+    .tip { background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2); border-left: 4px solid var(--green); border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .tip strong { color: var(--green); }
+
+    .script { background: var(--surf3); border: 1px solid var(--border); border-radius: 8px; padding: 20px 18px 16px; margin: 16px 0; font-size: 13px; line-height: 1.8; color: var(--text); font-style: italic; position: relative; }
+    .script-lbl { position: absolute; top: -11px; left: 14px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .05em; font-style: normal; }
+
+    /* INFO GRID */
+    .info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 18px 0; }
+    .info-tile { background: var(--surf3); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .info-tile-icon { font-size: 28px; margin-bottom: 8px; }
+    .info-tile-lbl { font-size: 11px; color: var(--dim); margin-bottom: 4px; }
+    .info-tile-val { font-size: 13px; font-weight: 700; color: var(--text); }
+
+    /* NAV */
+    .lesson-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; gap: 12px; }
+    .btn-prev, .btn-next { display: flex; align-items: center; gap: 8px; background: var(--surf); border: 1px solid var(--border); border-radius: 10px; padding: 12px 22px; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; transition: all .15s; }
+    .btn-prev:hover:not(:disabled), .btn-next:hover:not(:disabled) { background: var(--surf3); color: var(--text); border-color: var(--orange); }
+    .btn-prev:disabled, .btn-next:disabled { opacity: .3; cursor: default; }
+    .btn-done { background: linear-gradient(135deg, var(--orange), var(--orange-l)); border: none; border-radius: 10px; padding: 13px 30px; font-family: var(--font); font-size: 14px; font-weight: 800; color: #fff; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: opacity .2s, transform .1s; box-shadow: 0 4px 20px rgba(255,107,0,.3); }
+    .btn-done:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-done.completed { background: linear-gradient(135deg, var(--green), #059669); box-shadow: 0 4px 20px rgba(16,185,129,.3); }
+
+    /* OVERLAY */
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 140; }
+    .overlay.show { display: block; }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: fixed; left: -300px; top: 62px; z-index: 150; transition: left .3s; height: calc(100vh - 62px); width: 290px; }
+      .sidebar.open { left: 0; }
+      .main { padding: 20px 16px 60px; max-width: 100%; }
+      .info-grid { grid-template-columns: 1fr; }
+      .menu-btn { display: flex; }
+      .progress-wrap { display: none; }
+      .hdr-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-left">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <div class="hdr-brand" style="margin-left:8px">SoloShop</div>
+    <div class="hdr-sub">/ Khóa học thực chiến</div>
+  </div>
+  <div class="hdr-right">
+    <div class="progress-wrap">
+      <span id="prog-txt">0 / 10 bài</span>
+      <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog-bar" style="width:0%"></div></div>
+    </div>
+    <div class="member-badge">⭐ THÀNH VIÊN</div>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-hdr">
+      <div class="sidebar-hdr-title">Nội dung khóa học</div>
+      <div class="sidebar-hdr-count" id="sidebar-count">0 / 10 bài đã hoàn thành</div>
+    </div>
+
+    <div class="module-wrap">
+      <button class="module-btn" onclick="toggleMod('m0')">
+        <div class="module-btn-left"><div class="module-tag tag-intro">GT</div>Giới thiệu</div>
+        <span class="module-arrow open" id="arr-m0">▶</span>
+      </button>
+      <div class="lessons-list open" id="m0">
+        <button class="lesson-btn active" onclick="go(0)" id="lb0">
+          <span class="l-icon">📌</span><span class="l-name">Tổng quan SoloShop</span><span class="l-dur">5 phút</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="module-wrap">
+      <button class="module-btn" onclick="toggleMod('m1')">
+        <div class="module-btn-left"><div class="module-tag tag-b1">B1</div>Tìm Ngách & Nguồn Hàng</div>
+        <span class="module-arrow open" id="arr-m1">▶</span>
+      </button>
+      <div class="lessons-list open" id="m1">
+        <button class="lesson-btn" onclick="go(1)" id="lb1">
+          <span class="l-icon">🛍️</span><span class="l-name">Cách 1 – Tìm trên sàn thương mại</span><span class="l-dur">10 phút</span>
+        </button>
+        <button class="lesson-btn" onclick="go(2)" id="lb2">
+          <span class="l-icon">📍</span><span class="l-name">Cách 2 – Tìm tại địa phương</span><span class="l-dur">8 phút</span>
+        </button>
+        <button class="lesson-btn" onclick="go(3)" id="lb3">
+          <span class="l-icon">📱</span><span class="l-name">Cách 3 – Tìm CTV trên Facebook</span><span class="l-dur">6 phút</span>
+        </button>
+        <button class="lesson-btn" onclick="go(4)" id="lb4">
+          <span class="l-icon">📋</span><span class="l-name">Thông tin cần thu thập</span><span class="l-dur">8 phút</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="module-wrap">
+      <button class="module-btn" onclick="toggleMod('m2')">
+        <div class="module-btn-left"><div class="module-tag tag-b2">B2</div>Tạo Cửa Hàng Online</div>
+        <span class="module-arrow open" id="arr-m2">▶</span>
+      </button>
+      <div class="lessons-list open" id="m2">
+        <button class="lesson-btn" onclick="go(5)" id="lb5">
+          <span class="l-icon">▶️</span><span class="l-name">Video 1 – Đăng ký Claude Pro</span><span class="l-dur">Video</span>
+        </button>
+        <button class="lesson-btn" onclick="go(6)" id="lb6">
+          <span class="l-icon">▶️</span><span class="l-name">Video 2 – Tạo cửa hàng chi tiết</span><span class="l-dur">Video</span>
+        </button>
+        <button class="lesson-btn" onclick="go(7)" id="lb7">
+          <span class="l-icon">▶️</span><span class="l-name">Video 3 – Kết nối Telegram & Sheets</span><span class="l-dur">Video</span>
+        </button>
+        <button class="lesson-btn" onclick="go(8)" id="lb8">
+          <span class="l-icon">▶️</span><span class="l-name">Video 4 – Đưa cửa hàng lên Github để mọi người truy cập</span><span class="l-dur">Video</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="module-wrap">
+      <div class="module-btn" style="opacity:.4;cursor:default">
+        <div class="module-btn-left"><div class="module-tag tag-locked">B3</div>Tìm Khách Hàng</div>
+        <span style="font-size:16px">🔒</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="main"></main>
+
+</div>
+
+<script>
+const TOTAL = 9;
+
+const YT = {
+  0: 'AjoxsYp5a2g',
+  5: '6yi7Oi0s6ME',
+  6: '8cocEuSKeb0',
+  7: '3fla0cO0zHg',
+  8: 'MaLELIT2g1w'
+};
+
+let cur = 0;
+let done = new Set(JSON.parse(localStorage.getItem('ss_v2_done') || '[]'));
+function saveDone() { localStorage.setItem('ss_v2_done', JSON.stringify([...done])); }
+
+const lessons = [
+  {
+    module: 'Giới thiệu', tag: 'Tổng quan', title: 'Tổng Quan Về SoloShop',
+    hasVideo: true,
+    body: `<div class="content-card">
+      <h3>🎯 Mô hình SoloShop là gì?</h3>
+      <p>SoloShop là mô hình kinh doanh online cho phép bạn <strong>tự sở hữu cửa hàng riêng</strong> mà không cần nhập hàng, không cần kho bãi, không cần vốn lớn.</p>
+      <div class="info-grid">
+        <div class="info-tile"><div class="info-tile-icon">🏭</div><div class="info-tile-lbl">Nhà cung cấp</div><div class="info-tile-val">Giữ hàng & giao</div></div>
+        <div class="info-tile"><div class="info-tile-icon">🏪</div><div class="info-tile-lbl">Cửa hàng của bạn</div><div class="info-tile-val">Nhận đơn & marketing</div></div>
+        <div class="info-tile"><div class="info-tile-icon">👤</div><div class="info-tile-lbl">Khách hàng</div><div class="info-tile-val">Mua & thanh toán</div></div>
+      </div>
+      <h3>📋 Chương trình gồm 2 bước chính</h3>
+      <ul>
+        <li><strong>Bước 1:</strong> Tìm ngách sản phẩm và nguồn hàng phù hợp</li>
+        <li><strong>Bước 2:</strong> Tạo cửa hàng online bằng AI — hoàn toàn miễn phí hoặc chi phí rất thấp</li>
+      </ul>
+      <div class="hl">💡 Chương trình hỗ trợ bạn đến khi tạo được cửa hàng và đi vào vận hành. Phần tìm khách hàng và kinh doanh sau đó là do bạn chủ động thực hiện.</div>
+    </div>`
+  },
+  {
+    module: 'Bước 1 – Tìm Ngách & Nguồn Hàng', tag: 'Bước 1 – Cách 1', title: 'Tìm Cửa Hàng Lớn Trên Sàn Thương Mại',
+    body: `<div class="content-card">
+      <h3>🛍️ Các bước thực hiện</h3>
+      <ul>
+        <li>Tìm cửa hàng lớn trong ngách bạn chọn trên <strong>Shopee</strong> hoặc <strong>TikTok Shop</strong></li>
+        <li><strong>Đặt mua 1 sản phẩm</strong> của shop đó để lấy được thông tin liên hệ thật</li>
+        <li>Dùng thông tin đó để liên hệ trực tiếp, xin làm <strong>đại lý / cộng tác viên online</strong></li>
+      </ul>
+      <div class="hl">📦 Tại sao phải đặt mua? Vì thông tin liên hệ hiển thị trên sàn thường bị ẩn — chỉ sau khi mua hàng bạn mới có số điện thoại / Zalo thật của shop để liên hệ trực tiếp.</div>
+      <h3 style="margin-top:20px">💬 Khi liên hệ, cần nói gì?</h3>
+      <p style="color:var(--muted);font-size:14px;line-height:1.7">Giới thiệu bản thân đang xây dựng cửa hàng online và muốn hợp tác bán hàng. Nếu bạn có kênh <strong>TikTok hoặc Fanpage</strong> (dù nhỏ), hãy đề cập — sẽ tăng đáng kể uy tín và khả năng được chấp nhận.</p>
+    </div>`
+  },
+  {
+    module: 'Bước 1 – Tìm Ngách & Nguồn Hàng', tag: 'Bước 1 – Cách 2', title: 'Tìm Nguồn Hàng Trong Khu Vực Sinh Sống',
+    body: `<div class="content-card">
+      <div class="hl" style="font-size:15px">📍 Đây là cách được đánh giá <strong>TỐT NHẤT</strong> trong chương trình SoloShop</div>
+      <h3>Tại sao đây là cách tốt nhất?</h3>
+      <ul>
+        <li>Gặp trực tiếp → xây dựng lòng tin nhanh hơn nhiều</li>
+        <li>Kiểm tra chất lượng hàng thực tế trước khi bán</li>
+        <li>Điều kiện hợp tác linh hoạt, thương lượng được</li>
+        <li>Ít đối thủ hơn vì ít người khai thác kênh này</li>
+        <li>Hỗ trợ tốt hơn khi phát sinh vấn đề</li>
+      </ul>
+      <h3 style="margin-top:18px">🗺️ Nơi nào để tìm?</h3>
+      <ul>
+        <li>Chợ đầu mối, khu buôn bán tập trung</li>
+        <li>Xưởng sản xuất, cơ sở gia công địa phương</li>
+        <li>Làng nghề truyền thống trong vùng</li>
+        <li>Cửa hàng bán sỉ chưa có kênh online</li>
+      </ul>
+      <div class="tip"><strong>💡 Rất nhiều xưởng sản xuất</strong> không có kênh online và sẵn sàng cho bạn bán hàng hộ — họ lo hàng, bạn lo khách!</div>
+    </div>`
+  },
+  {
+    module: 'Bước 1 – Tìm Ngách & Nguồn Hàng', tag: 'Bước 1 – Cách 3', title: 'Tìm Cửa Hàng Tuyển CTV Trên Facebook',
+    body: `<div class="content-card">
+      <h3>📱 Tìm kiếm trên Facebook</h3>
+      <p>Nhiều nhà cung cấp đang chủ động đăng bài tuyển cộng tác viên trên Facebook — đây là nguồn dễ tiếp cận nhất khi mới bắt đầu.</p>
+      <h3 style="margin-top:18px">🔍 Từ khóa tìm kiếm hiệu quả</h3>
+      <ul>
+        <li><em>"tuyển CTV bán hàng online"</em></li>
+        <li><em>"tuyển đại lý"</em></li>
+        <li><em>"cần cộng tác viên"</em></li>
+        <li><em>"hợp tác bán hàng không cần vốn"</em></li>
+      </ul>
+      <h3 style="margin-top:18px">✅ Dấu hiệu nhà cung cấp uy tín</h3>
+      <ul>
+        <li>Trang Fanpage có nhiều đánh giá thật, hoạt động đều đặn</li>
+        <li>Có số điện thoại / Zalo rõ ràng</li>
+        <li>Phản hồi nhanh khi nhắn tin thử</li>
+        <li>Ảnh / video sản phẩm chất lượng, thực tế</li>
+      </ul>
+      <h3 style="margin-top:18px">⚠️ Cần tránh</h3>
+      <ul>
+        <li>Yêu cầu đặt cọc tiền trước khi ký hợp tác</li>
+        <li>Trang mới tạo, ít thông tin xác minh</li>
+        <li>Không cung cấp được ảnh hàng thật</li>
+      </ul>
+    </div>`
+  },
+  {
+    module: 'Bước 1 – Tìm Ngách & Nguồn Hàng', tag: 'Bước 1 – Tổng kết', title: 'Thông Tin Cần Thu Thập Từ Nhà Cung Cấp',
+    body: `<div class="content-card">
+      <h3>📋 Checklist đầy đủ</h3>
+      <p>Trước khi bắt đầu tạo cửa hàng, hãy đảm bảo bạn đã có đủ các thông tin sau:</p>
+      <ul>
+        <li><strong>Tên sản phẩm</strong> — tên chính xác, đầy đủ</li>
+        <li><strong>Giá nhập</strong> — để tính giá bán và biên lợi nhuận</li>
+        <li><strong>Hình ảnh sản phẩm</strong> — nhiều góc, nền trắng và ảnh thực tế sử dụng</li>
+        <li><strong>Video sản phẩm</strong> — demo tính năng, unboxing (nếu có)</li>
+        <li><strong>Bảng màu sắc / kích thước</strong> — nếu sản phẩm có nhiều lựa chọn</li>
+        <li><strong>Mô tả chi tiết</strong> — chất liệu, tính năng, thông số kỹ thuật</li>
+        <li><strong>Chính sách đổi trả</strong> — điều kiện và thời hạn đổi trả</li>
+        <li><strong>Phí vận chuyển</strong> — phí ship và điều kiện miễn phí ship</li>
+      </ul>
+      <div class="hl">📁 Lưu tất cả vào 1 folder trên <strong>Google Drive</strong> để dễ tìm khi cần đưa vào cửa hàng.</div>
+      <h3 style="margin-top:20px">💰 Cách tính giá bán tham khảo</h3>
+      <ul>
+        <li>Giá nhập × 1.5 đến × 2 = Giá bán tối thiểu có lời</li>
+        <li>So sánh với giá thị trường để đặt giá cạnh tranh</li>
+        <li>Cộng thêm phí ship nếu bạn phải chịu</li>
+      </ul>
+    </div>`
+  },
+  {
+    module: 'Bước 2 – Tạo Cửa Hàng Online', tag: 'Bước 2 – Video 1', title: 'Đăng Ký Tài Khoản Claude Pro',
+    hasVideo: true,
+    body: `<div class="content-card">
+      <h3>🤖 Claude Pro là gì?</h3>
+      <p>Claude là trợ lý AI của Anthropic — công cụ mạnh nhất hiện nay để viết code và tạo trang web. Bạn sẽ dùng Claude để xây dựng cửa hàng online <strong>mà không cần biết lập trình</strong>.</p>
+      <h3 style="margin-top:18px">📝 Tóm tắt các bước</h3>
+      <ul>
+        <li>Truy cập <strong>claude.ai</strong></li>
+        <li>Đăng ký bằng Gmail hoặc Google Account</li>
+        <li>Chọn gói <strong>Pro ($20/tháng)</strong> để có đủ tính năng cần thiết</li>
+        <li>Thanh toán bằng thẻ Visa/Mastercard quốc tế</li>
+      </ul>
+      <div class="tip"><strong>💡 Chưa có thẻ quốc tế?</strong> Dùng thẻ Visa ảo từ Timo, Cake Bank hoặc nhờ người thân có thẻ thanh toán hộ.</div>
+    </div>`
+  },
+  {
+    module: 'Bước 2 – Tạo Cửa Hàng Online', tag: 'Bước 2 – Video 2', title: 'Cách Tạo Cửa Hàng Chi Tiết Bằng AI',
+    hasVideo: true,
+    body: `<div class="content-card">
+      <h3>🏪 Tóm tắt quy trình</h3>
+      <ul>
+        <li>Vào <strong>claude.ai</strong> → bắt đầu cuộc trò chuyện mới</li>
+        <li>Chuẩn bị ảnh sản phẩm, giá, tên shop, thông tin liên hệ</li>
+        <li>Mô tả yêu cầu cho Claude và nhận code HTML</li>
+        <li>Xem lại kết quả, yêu cầu chỉnh sửa đến khi ưng ý</li>
+      </ul>
+      <h3 style="margin-top:18px">💬 Mẫu lệnh cho Claude</h3>
+      <div class="script">
+        <div class="script-lbl">Prompt mẫu</div>
+        "Hãy tạo cho tôi 1 trang bán hàng chuyên nghiệp cho sản phẩm [TÊN SẢN PHẨM]. Tên shop: [TÊN SHOP]. Giá bán: [GIÁ]. Trang cần có: ảnh sản phẩm, mô tả, nút mua hàng, form đặt hàng. Thiết kế hiện đại, tối ưu cho điện thoại."
+      </div>
+    </div>`
+  },
+  {
+    module: 'Bước 2 – Tạo Cửa Hàng Online', tag: 'Bước 2 – Video 3', title: 'Kết Nối Telegram & Google Sheets Nhận Đơn Tự Động',
+    hasVideo: true,
+    body: `<div class="content-card">
+      <h3>🔔 Tại sao cần kết nối?</h3>
+      <p>Khi khách đặt hàng, bạn nhận thông báo <strong>ngay lập tức</strong> qua Telegram và đơn tự động lưu vào Google Sheets — không cần liên tục kiểm tra thủ công.</p>
+      <div class="info-grid">
+        <div class="info-tile"><div class="info-tile-icon">📱</div><div class="info-tile-lbl">Telegram Bot</div><div class="info-tile-val">Thông báo đơn mới</div></div>
+        <div class="info-tile"><div class="info-tile-icon">📊</div><div class="info-tile-lbl">Google Sheets</div><div class="info-tile-val">Lưu toàn bộ đơn hàng</div></div>
+        <div class="info-tile"><div class="info-tile-icon">⚡</div><div class="info-tile-lbl">Tự động 24/7</div><div class="info-tile-val">Không cần thao tác thủ công</div></div>
+      </div>
+      <div class="tip"><strong>📌 Xem kỹ video</strong> — quá trình này có nhiều bước nhỏ cần làm theo đúng thứ tự.</div>
+    </div>`
+  },
+  {
+    module: 'Bước 2 – Tạo Cửa Hàng Online', tag: 'Bước 2 – Video 4', title: 'Đưa Cửa Hàng Lên Github Để Mọi Người Truy Cập',
+    hasVideo: true,
+    body: `<div class="content-card">
+      <h3>🚀 Github Pages – Hosting miễn phí mãi mãi</h3>
+      <p>GitHub Pages cho phép bạn host website <strong>hoàn toàn miễn phí</strong> và có link chia sẻ ngay. Không cần mua hosting, không cần mua domain.</p>
+      <div class="hl" style="text-align:center">
+        🌐 Link website của bạn sẽ là:<br>
+        <strong style="font-size:15px">https://[tên-tài-khoản].github.io/[tên-shop]/</strong>
+      </div>
+      <h3 style="margin-top:18px">📋 Tóm tắt các bước</h3>
+      <ul>
+        <li>Đăng ký tài khoản tại <strong>github.com</strong></li>
+        <li>Tạo Repository mới cho cửa hàng</li>
+        <li>Upload file HTML cửa hàng lên</li>
+        <li>Bật GitHub Pages trong phần Settings</li>
+        <li>Chờ 1–2 phút → website live!</li>
+      </ul>
+      <div class="tip"><strong>✅ Sau bài này bạn đã có:</strong> Cửa hàng online hoạt động thật, tự động nhận đơn qua Telegram, lưu đơn vào Google Sheets. Hoàn tất Bước 2!</div>
+    </div>`
+  }
+];
+
+function render(idx) {
+  cur = idx;
+  const L = lessons[idx];
+  const isDone = done.has(idx);
+
+  let videoHtml = '';
+  if (L.hasVideo && YT[idx]) {
+    videoHtml = `<div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/${YT[idx]}?rel=0&modestbranding=1"
+        title="${L.title}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>`;
+  }
+
+  const prevDis = idx === 0 ? 'disabled' : '';
+  const nextDis = idx === lessons.length - 1 ? 'disabled' : '';
+
+  document.getElementById('main').innerHTML = `
+    <div class="breadcrumb">
+      <span>SoloShop</span><span class="sep">›</span>
+      <span>${L.module}</span><span class="sep">›</span>
+      <span class="cur">${L.tag}</span>
+    </div>
+    <div class="lesson-tag-chip">${L.tag}</div>
+    <div class="lesson-title">${L.title}</div>
+    <div class="lesson-meta">
+      ${isDone ? '<span class="done-badge">✅ Đã hoàn thành</span>' : ''}
+    </div>
+    ${videoHtml}
+    ${L.body}
+    <div class="lesson-nav">
+      <button class="btn-prev" onclick="go(${idx-1})" ${prevDis}>← Bài trước</button>
+      <button class="btn-done ${isDone ? 'completed' : ''}" onclick="markDone(${idx})">
+        ${isDone ? '✅ Đã hoàn thành' : '✓ Đánh dấu hoàn thành'}
+      </button>
+      <button class="btn-next" onclick="go(${idx+1})" ${nextDis}>Bài tiếp →</button>
+    </div>
+  `;
+
+  // update sidebar
+  for (let i = 0; i < lessons.length; i++) {
+    const el = document.getElementById('lb' + i);
+    if (!el) continue;
+    el.classList.remove('active','done');
+    if (i === idx) el.classList.add('active');
+    else if (done.has(i)) el.classList.add('done');
+  }
+
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (window.innerWidth <= 860) closeSidebar();
+}
+
+function go(idx) {
+  if (idx < 0 || idx >= lessons.length) return;
+  render(idx);
+}
+
+function markDone(idx) {
+  done.add(idx);
+  saveDone();
+  render(idx);
+}
+
+function updateProgress() {
+  const pct = Math.round((done.size / TOTAL) * 100);
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-txt').textContent = done.size + ' / ' + TOTAL + ' bài';
+  document.getElementById('sidebar-count').textContent = done.size + ' / ' + TOTAL + ' bài đã hoàn thành';
+}
+
+function toggleMod(id) {
+  const list = document.getElementById(id);
+  const arrow = document.getElementById('arr-' + id);
+  const open = list.classList.contains('open');
+  list.classList.toggle('open', !open);
+  arrow.classList.toggle('open', !open);
+}
+
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('overlay');
+  const opening = !sb.classList.contains('open');
+  sb.classList.toggle('open', opening);
+  ov.classList.toggle('show', opening);
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+render(0);
+</script>
+</body>
+</html>
